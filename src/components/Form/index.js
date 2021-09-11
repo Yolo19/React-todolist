@@ -13,9 +13,7 @@ const FormLeft = () => {
     const dispatch = useDispatch();
 
     const onFinish = (e) => {
-        console.log(e);
         const newTodo = e;
-        console.log(newTodo);
         dispatch(addTodo(newTodo));
     };
 

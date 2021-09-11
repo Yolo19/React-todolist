@@ -9,7 +9,6 @@ export const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            console.log(action.payload);
             let newTodo = {
                 id: Math.random().toString(36).substr(2, 9),
                 key: Math.random().toString(36).substr(2, 9),
@@ -21,14 +20,11 @@ export const todoSlice = createSlice({
         },
 
         deleteTodo: (state, action) => {
-            console.log("sss");
             const newdata = state.table_list.filter(item => item.id !== action.payload);
-            console.log("newdata", newdata)
             state.table_list = newdata;
         },
 
         deleteAllSelected: (state, action) => {
-            console.log("sss", action.payload);
             const newarr = state.table_list.filter(item => !action.payload.includes(item.id));
             state.table_list = newarr;
         },
