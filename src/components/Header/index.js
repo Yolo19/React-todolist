@@ -1,15 +1,14 @@
 import React from "react";
-import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 import "./index.css"
 
-const Header = ()=>{
+const Header = () => {
     let history = useHistory();
 
-    const GotoTodoPage =()=>{
+    const GotoTodoPage = () => {
         history.push("/");
     };
-    const GotoAboutPage =()=>{
+    const GotoAboutPage = () => {
         history.push("/about");
     };
 

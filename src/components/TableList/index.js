@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import { Table, Button,message  } from "antd";
+import { Table, Button, message } from "antd";
 import { useHistory } from "react-router-dom";
 import { Route } from "react-router-dom";
 import DetailInfo from "../../pages/DetailInfo";
-import HomePage from "../../pages/Home";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTodoList, deleteTodo,deleteAllSelected } from "../../slice/todoSlice"
+import { selectTodoList, deleteTodo, deleteAllSelected } from "../../slice/todoSlice"
 
 const TableList = () => {
     let history = useHistory();
@@ -18,31 +17,6 @@ const TableList = () => {
     useEffect(() => {
         setData(todoList.table_list)
     }, [todoList])
-
-    // const [data, setData] = useState(
-    //      [
-    //         {
-    //             key: "1",
-    //             description: "John Brown",
-    //             category: "New York No. 1 Lake Park",
-    //         },
-    //         {
-    //             key: "2",
-    //             description: "Jim Green",
-    //             category: "London No. 1 Lake Park",
-    //         },
-    //         {
-    //             key: "3",
-    //             description: "Joe Black",
-    //             category: "Sidney No. 1 Lake Park",
-    //         },
-    //         {
-    //             key: "4",
-    //             description: "Disabled User",
-    //             category: "Sidney No. 1 Lake Park",
-    //         },
-    //     ]
-    // );
 
     const columns = [
         { title: "Description", dataIndex: "description", key: "description" },
@@ -75,8 +49,8 @@ const TableList = () => {
 
     const rowSelection = {
         onSelect: (record, selected, selectedRows) => {
-            console.log("selecttest",selectedRows);
-            setSelectItem(selectedRows);           
+            console.log("selecttest", selectedRows);
+            setSelectItem(selectedRows);
         },
         onSelectAll: (selected, selectedRows, changeRows) => {
             console.log(selected, selectedRows, changeRows);
@@ -94,17 +68,17 @@ const TableList = () => {
         history.push(`/todo/${record.id}`);
     }
 
-    const deleteAll =(record)=>{
-        if(selectItem==null) {
+    const deleteAll = (record) => {
+        if (selectItem == null) {
             message.error("Please select at least one item");
         }
         else {
             let select_id_arr = [];
-            console.log("error",selectItem);
+            console.log("error", selectItem);
             //select_id_arr =selectItem.map((items)=>items.id);
-            select_id_arr =selectItem.filter((items)=>items?.id).map((items)=>items.id);
+            select_id_arr = selectItem.filter((items) => items?.id).map((items) => items.id);
             dispatch(deleteAllSelected(select_id_arr));
-        }   
+        }
     }
 
 

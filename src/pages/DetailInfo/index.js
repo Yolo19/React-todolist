@@ -1,13 +1,12 @@
 import React from "react";
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTodoList, addTodo} from "../../slice/todoSlice"
+import { useSelector } from "react-redux";
+import { selectTodoList} from "../../slice/todoSlice"
 
 const DetailInfo = (props)=>{
     const todoList = useSelector(state => (selectTodoList(state)));
     const urlId = window.location.href.split("/");;
     const id = urlId[urlId.length-1]
-    console.log("555",urlId[urlId.length-1]);
     const todoItem = todoList.table_list.filter(item => item.id == id);
 
     return (
@@ -25,7 +24,6 @@ const DetailInfo = (props)=>{
             
         </div>
     )
-
 };
 
 export default DetailInfo;

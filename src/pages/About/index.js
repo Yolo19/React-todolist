@@ -3,7 +3,7 @@ import { Button } from "antd";
 import "./index.css";
 import Header from "../../components/Header";
 
-const AboutPage = ()=>{
+const AboutPage = () => {
 
     return (
         <div>
